@@ -5,16 +5,19 @@ def knowledge_distillation_train(teacher_model,
                         student_model, 
                         n_epochs,
                         trainloader,
+                        criterion,
+                        optimizer,
+                        optimizer_params,
                         teacher_percentage = 0.5 ,
-                        temperature= 2,
-                        optimizer=None,
-                        criterion=None):    
+                        temperature= 2,):
+
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu") 
-    if optimizer is None:
-        optimizer = torch.optim.Adam(student_model.parameters(),lr=0.001)
-    if criterion is None:
-        criterion = torch.nn.CrossEntropyLoss()
+    optimizer = optimizer(student_model.parameters(),**optimizer_params)
+    student_model = student_model.to(device)
+    teacher_model = teacher_model.to(device)
+    teacher_model.eval()
     student_model.train()  
+    
     for epoch in range(n_epochs):
         running_loss = 0.0
 
