@@ -11,4 +11,9 @@
 | `temperature`       | The temperature parameter for softening the logits. Default is 2.           |
 
 
-Returns the trained student model
+Returns 
+| Parameter           | Description                                                                 |
+|---------------------|-----------------------------------------------------------------------------|
+| `student_model`     | The trained student model                |
+| `training_losses`     | A list with the training losses per epoch          |
+
