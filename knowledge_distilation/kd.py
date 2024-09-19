@@ -43,5 +43,5 @@ def knowledge_distillation_train(teacher_model,
         print(f'Training Loss: {epoch_loss:.4f}')
         training_losses.append(epoch_loss)
         
-    return copy.deepcopy(student_model)
+    return copy.deepcopy(student_model), training_losses
         
