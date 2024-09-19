@@ -1,3 +1,4 @@
+Input
 | Parameter           | Description                                                                 |
 |---------------------|-----------------------------------------------------------------------------|
 | `teacher_model`     | The pre-trained teacher model used for knowledge distillation.              |
