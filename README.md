@@ -15,5 +15,5 @@ Returns
 | Parameter           | Type            |  Description                                                                 |
 |---------------------|-----------------|------------------------------------------------------------|
 | `student_model`     |  `torch.nn.Module`|The trained student model                |
-| `training_losses`     | List       |    A list with the training losses per epoch          |
+| `training_losses`     |   `List`       |    A list with the training losses per epoch          |
 
