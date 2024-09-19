@@ -17,7 +17,7 @@ def knowledge_distillation_train(teacher_model,
     teacher_model = teacher_model.to(device)
     teacher_model.eval()
     student_model.train()  
-    
+    training_losses =[]
     for epoch in range(n_epochs):
         running_loss = 0.0
 
@@ -39,7 +39,9 @@ def knowledge_distillation_train(teacher_model,
             running_loss += total_loss.item() * inputs.size(0)
 
         epoch_loss = running_loss / len(trainloader.dataset)
+      
         print(f'Training Loss: {epoch_loss:.4f}')
+        training_losses.append(epoch_loss)
         
     return copy.deepcopy(student_model)
         
