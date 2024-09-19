@@ -21,7 +21,7 @@ epochs  =1
 dummy_dataset = DummyDataset()
 trainloader = DataLoader(dummy_dataset, batch_size=10, shuffle=True)
 optimizer_params = {'lr': 0.001}
-new_model = knowledge_distillation_train(teacher, 
+new_model,training_losses = knowledge_distillation_train(teacher, 
                                          student,
                                          n_epochs=epochs,
                                          trainloader=trainloader,
