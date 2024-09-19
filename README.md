@@ -1,5 +1,13 @@
 This work was partially support by the ``Trustworthy And Resilient Decentralised Intelligence For Edge Systems (TaRDIS)" Project, funded by EU HORIZON EUROPE program, under grant agreement No 101093006
 
+
+from knowledge_distilation import knowledge_distillation_train
+
+The function to be exposed is import as follows
+
+`from knowledge_distilation import knowledge_distillation_train`
+as used as such
+
 Input
 | Parameter           | Type                | Description                                                                 |
 |---------------------|---------------------|-----------------------------------------------------------------------------|
