@@ -16,14 +16,8 @@ def knowledge_distillation_train(teacher_model: torch.nn.Module,
     teacher_model = teacher_model.to(device)
     teacher_model.eval()
     student_model.train()  
-<<<<<<< HEAD
-    training_losses =[]
-    for epoch in range(n_epochs):
-        running_loss = 0.0
-=======
     
     epoch_loss = 0.0
->>>>>>> 6a080f7 (added comments)
 
     for inputs, targets in trainloader:
         inputs = inputs.to(device)
@@ -47,17 +41,7 @@ def knowledge_distillation_train(teacher_model: torch.nn.Module,
         optimizer.step() 
         epoch_loss += total_loss.item() * inputs.size(0)
 
-<<<<<<< HEAD
-        epoch_loss = running_loss / len(trainloader.dataset)
-      
-        print(f'Training Loss: {epoch_loss:.4f}')
-        training_losses.append(epoch_loss)
-        
-    return copy.deepcopy(student_model), training_losses
-        
-=======
-    epoch_loss = epoch_loss / len(trainloader.dataset)
-        
+        epoch_loss = epoch_loss / len(trainloader.dataset)
+     
     return epoch_loss
         
->>>>>>> 6a080f7 (added comments)

@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from models import myVGG,vgg19_bn
+from models import StudentModel
 from knowledge_distilation import knowledge_distillation_train
 from torch.utils.data import Dataset, DataLoader
 
@@ -15,22 +15,10 @@ class DummyDataset(Dataset):
 
 
 
-student = myVGG()
-teacher = vgg19_bn()
+student = StudentModel()
+teacher  = torch.hub.load("chenyaofo/pytorch-cifar-models", "cifar10_vgg19_bn", pretrained=True)
+
 dummy_dataset = DummyDataset()
-<<<<<<< HEAD
-trainloader = DataLoader(dummy_dataset, batch_size=10, shuffle=True)
-optimizer_params = {'lr': 0.001}
-new_model,training_losses = knowledge_distillation_train(teacher, 
-                                         student,
-                                         n_epochs=epochs,
-                                         trainloader=trainloader,
-                                         criterion=nn.CrossEntropyLoss(),
-                                        optimizer= torch.optim.Adam,
-                                            optimizer_params=optimizer_params,
-                                         teacher_percentage=1,
-                                         temperature=1)
-=======
 trainloader = DataLoader(dummy_dataset, batch_size=8, shuffle=True)
 optimizer = torch.optim.Adam(student.parameters(), lr=0.001)
 knowledge_distillation_train(teacher, 
@@ -40,4 +28,3 @@ knowledge_distillation_train(teacher,
                             optimizer=optimizer,
                             teacher_percentage=1,
                             temperature=1)
->>>>>>> 6a080f7 (added comments)
