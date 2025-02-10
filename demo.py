@@ -17,8 +17,8 @@ class DummyDataset(Dataset):
 
 student = myVGG()
 teacher = vgg19_bn()
-epochs  =1
 dummy_dataset = DummyDataset()
+<<<<<<< HEAD
 trainloader = DataLoader(dummy_dataset, batch_size=10, shuffle=True)
 optimizer_params = {'lr': 0.001}
 new_model,training_losses = knowledge_distillation_train(teacher, 
@@ -30,3 +30,14 @@ new_model,training_losses = knowledge_distillation_train(teacher,
                                             optimizer_params=optimizer_params,
                                          teacher_percentage=1,
                                          temperature=1)
+=======
+trainloader = DataLoader(dummy_dataset, batch_size=8, shuffle=True)
+optimizer = torch.optim.Adam(student.parameters(), lr=0.001)
+knowledge_distillation_train(teacher, 
+                            student,
+                            trainloader=trainloader,
+                            criterion=nn.CrossEntropyLoss(),
+                            optimizer=optimizer,
+                            teacher_percentage=1,
+                            temperature=1)
+>>>>>>> 6a080f7 (added comments)
