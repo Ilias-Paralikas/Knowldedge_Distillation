@@ -16,12 +16,13 @@ class DummyDataset(Dataset):
 
 
 student = StudentModel()
+# your pretrained large model
 teacher  = torch.hub.load("chenyaofo/pytorch-cifar-models", "cifar10_vgg19_bn", pretrained=True)
 
 dummy_dataset = DummyDataset()
 trainloader = DataLoader(dummy_dataset, batch_size=8, shuffle=True)
 optimizer = torch.optim.Adam(student.parameters(), lr=0.001)
-knowledge_distillation_train(teacher, 
+epoch_loss =knowledge_distillation_train(teacher, 
                             student,
                             trainloader=trainloader,
                             criterion=nn.CrossEntropyLoss(),

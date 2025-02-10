@@ -9,7 +9,9 @@ def knowledge_distillation_train(teacher_model: torch.nn.Module,
                         teacher_percentage :float= 0.5 , # defines the weight of the teacher's predictions vs the dataset's labels
                         temperature:float= 2, # defines the softness of the softmax temperature
                         device :Optional[str]=None):
-    
+    '''
+    this function performs a single epoch of training with knowledge distillation
+    '''
     if device is None:
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu") 
     student_model = student_model.to(device)

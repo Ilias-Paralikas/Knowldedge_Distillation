@@ -1,18 +1,21 @@
-| Parameter           | Description                                                                 |
-|---------------------|-----------------------------------------------------------------------------|
-| `teacher_model`     | The pre-trained teacher model used for knowledge distillation.              |
-| `student_model`     | The student model that will learn from the teacher model.                   |
-| `n_epochs`          | The number of epochs to train the student model.                            |
-| `trainloader`       | The DataLoader providing the training data.                                 |
-| `criterion`         | The loss function used to compute the loss.                                 |
-| `optimizer`         | The optimizer  used to update the model parameters (e.g., `torch.optim.Adam`). |
-| `teacher_percentage`| The percentage of teacher model's output to be used in the loss calculation. Default is 0.5. |
-| `temperature`       | The temperature parameter for softening the logits. Default is 2.           |
+# Simple Implementation Of Knowledge Distillation for Classification Task
 
+see demo.py for sample usage
+## Parameters
 
-Returns 
-| Parameter           | Type            |  Description                                                                 |
-|---------------------|-----------------|------------------------------------------------------------|
-| `student_model`     |  `torch.nn.Module`|The trained student model                |
-| `training_losses`     |   `List`       |    A list with the training losses per epoch          |
+| Parameter           | Type                           | Description                                                                    |
+|--------------------|--------------------------------|--------------------------------------------------------------------------------|
+| `teacher_model`    | `torch.nn.Module`             | The pre-trained teacher model used for knowledge distillation                  |
+| `student_model`    | `torch.nn.Module`             | The student model that will learn from the teacher model                       |
+| `trainloader`      | `torch.utils.data.DataLoader`  | The DataLoader providing the training data                                    |
+| `criterion`        | `torch.nn.Module`             | The loss function used to compute the loss                                     |
+| `optimizer`        | `torch.optim.Optimizer`        | The optimizer used to update the model parameters (e.g., `torch.optim.Adam`)  |
+| `teacher_percentage`| `float`                       | The percentage of teacher model's output in loss calculation (default: 0.5)    |
+| `temperature`      | `float`                       | The temperature parameter for softening the logits (default: 2)               |
+
+## Returns
+
+| Parameter    | Type    | Description                                  |
+|-------------|---------|----------------------------------------------|
+| `epoch_loss`| `int`   | A list with the training of one epoch    |
 
